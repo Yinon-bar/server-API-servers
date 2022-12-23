@@ -7,6 +7,6 @@ let connection = mysql.createConnection({
 });
 
 connection.connect();
-console.log("connected to mysql");
+console.log("Connected to mysql".magenta.bold);
 
 module.exports = connection;
