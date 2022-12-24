@@ -1,15 +1,12 @@
 const express = require("express");
 const router = express.Router();
 const connection = require("../1-assets/db/mysqlConnect");
+const { getAllData } = require("../5-logic/serverLogic");
 
-router.get("/servers", (req, res, next) => {
-  connection.query("SELECT * FROM servers", (error, results, fields) => {
-    if (error) throw error;
-    console.log("The solution is: ", results);
-  });
-
-  connection.end();
-  res.json({ msg: "Servers route working" });
+router.get("/servers", async (req, res, next) => {
+  const results = await getAllData();
+  // console.log(results);
+  res.json(results);
 });
 
 module.exports = router;
